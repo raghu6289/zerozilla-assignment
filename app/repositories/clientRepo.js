@@ -30,9 +30,9 @@ export const findTopBill = async () => {
     },
     {
       $project: {
+        agencyName: "$agency.name",
         clientName: "$name",
         totalBill: "$totalBill",
-        agencyName: "$agency.name",
       },
     },
   ]);
