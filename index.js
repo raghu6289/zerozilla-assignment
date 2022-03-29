@@ -14,11 +14,11 @@ app.get('/', (req, res) => { res.send("Welcome to Zerozilla") })
 app.use(errorHandler)
 
 //PORT
-const PORT = 3000;
+const PORT = 5000;
 
 //server
 mongoSetup();
 
-app.listen(PORT, () => {
+app.listen(process.env.PORT || PORT, () => {
   console.log("server is running at port ", PORT);
 });
