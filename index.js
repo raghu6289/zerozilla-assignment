@@ -10,6 +10,7 @@ app.use(express.urlencoded({ extended: true }));
 //Route
 
 app.use("/api/v1/", router);
+app.get('/', (req, res) => { res.send("Welcome to Zerozilla") })
 app.use(errorHandler)
 
 //PORT
