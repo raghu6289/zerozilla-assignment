@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { v4 as uuidv4 } from 'uuid';
 
 const clientSchema = mongoose.model(
   "client",
@@ -7,6 +8,7 @@ const clientSchema = mongoose.model(
       type: String,
       required: true,
       unique: true,
+      default:() => uuidv4()
     },
     agencyId: {
       type: String,

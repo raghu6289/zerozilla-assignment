@@ -1,6 +1,6 @@
 import client from "../schemas/client.js";
-export const add = async (data) => {
-  return await client.create(data);
+export const bulkCreate = async (clients) => {
+  return await client.insertMany(clients);
 };
 
 export const update = async (id, attrs) => {

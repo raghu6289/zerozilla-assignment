@@ -1,3 +1,4 @@
+import { errorCodes } from "../middleware/globalErrorHandler.js";
 import * as clientRepo from "../repositories/clientRepo.js";
 
 export const add = async (data) => {
@@ -5,7 +6,11 @@ export const add = async (data) => {
 };
 
 export const update = async (id, attrs) => {
-  return await clientRepo.update(id, attrs);
+  const updatedClient = await clientRepo.update(id, attrs);
+  if (!updatedClient) {
+    throw { code: errorCodes.notFound }
+  }
+  return updatedClient;
 };
 
 export const getTopBill = async () => {
