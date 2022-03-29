@@ -1,9 +1,7 @@
 import mongoose from "mongoose";
 
 async function mongoSetup() {
-  mongoose.connect("mongodb://localhost:27017/zerozilla", {
-    // useNewUrlParser: true,
-    // useCreateIndex: true,
+  mongoose.connect("mongodb+srv://raghu7795:Password%237795@cluster0.igzei.mongodb.net/myFirstDatabase?retryWrites=true&w=majority", {
   });
 }
 
