@@ -7,5 +7,5 @@ const validator = createValidator()
 
 export const clientRouter = Router();
 
-clientRouter.patch("/:id",validator.body(updateAgencyValidation),clientController.update);
+clientRouter.patch("/:id", validator.body(updateAgencyValidation), clientController.update);
 clientRouter.get("/topBill", clientController.getTopBill);

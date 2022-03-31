@@ -7,7 +7,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
     unique: true,
-    minlength: 5
+    minlength: [3, "Must be at least 3"]
   },
   password: {
     type: String,
@@ -26,23 +26,9 @@ const userSchema = new mongoose.Schema({
       }
     }
   ]
-})
+});
 
-userSchema.pre('save', function (next) {
-  const user = this
-  if (user.isNew) {            //the function executes only when the user is new
-    bcryptjs.genSalt(10)
-      .then(function (salt) {
-        bcryptjs.hash(user.password, salt)
-          .then(function (encryptedPassword) {
-            user.password = encryptedPassword
-            next()
-          })
-      })
-  } else {
-    next()
-  }
-})
+
 
 
 userSchema.statics.findByToken = function (token) {
@@ -59,27 +45,17 @@ userSchema.statics.findByToken = function (token) {
   })
 }
 
-
-userSchema.methods.generateToken = function () {
-  const user = this
+userSchema.methods.generateToken = async function () {
+  const user = this // "this" is used to bring the user details like username,_id
   const tokenData = {
     _id: user._id,
     username: user.username,
     createdAt: Number(new Date())
   }
-  const token = jwt.sign(tokenData, 'jwt@123')
-  user.tokens.push({
-    token
-  })
-  return user.save()
-    .then(function (user) {
-      return Promise.resolve({
-        token
-      })
-    })
-    .catch(function (err) {
-      return Promise.reject(err)
-    })
+  const token = await jwt.sign(tokenData, 'jwt@123')
+  user.tokens.push({ token })
+  user.save()
+  return ({ token })
 }
 
 
