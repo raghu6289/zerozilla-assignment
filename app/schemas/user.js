@@ -2,6 +2,7 @@ import mongoose from 'mongoose';
 import jwt from 'jsonwebtoken';
 import bcryptjs from 'bcryptjs';
 
+// User Model to store User Register information and tokens
 const userSchema = new mongoose.Schema({
   username: {
     type: String,
@@ -28,22 +29,23 @@ const userSchema = new mongoose.Schema({
   ]
 });
 
+// verifying token
 
-
-
-userSchema.statics.findByToken = function (token) {
+userSchema.statics.findByToken = async function (token) {
   const User = this
   let tokenData
-  try {
-    tokenData = jwt.verify(token, 'jwt@123')
-  } catch (err) {
-    return Promise.reject(err)
+  tokenData = await jwt.verify(token, 'jwt@123')
+  if (tokenData) {
+    return User.findOne({
+      _id: tokenData._id,
+      'tokens.token': token
+    })
+  } else {
+    throw err
   }
-  return User.findOne({
-    _id: tokenData._id,
-    'tokens.token': token
-  })
 }
+
+// Generating token
 
 userSchema.methods.generateToken = async function () {
   const user = this // "this" is used to bring the user details like username,_id
@@ -58,29 +60,21 @@ userSchema.methods.generateToken = async function () {
   return ({ token })
 }
 
+// verifying user credentials for login
 
-userSchema.statics.findByCredentials = function (username, password) {
-  const User = this
-  return User.findOne({ username })
-    .then(function (user) {
-      if (!user) {
-        return Promise.reject('invalid username')
-      }
-      return bcryptjs.compare(password, user.password)
-        .then(function (result) {
-          if (result) {
-            return Promise.resolve(user)
-          } else {
-            return Promise.reject('invalid password')
-          }
-        })
-    })
-    .catch(function (err) {
-      return Promise.reject(err)
-    })
-}
-
+userSchema.statics.findByCredentials = async function (username, password) {
+  const User = this;
+  const user = await User.findOne({ username });
+  if (user) {
+    const decoded = await bcryptjs.compare(password, user.password)
+    if (!decoded) {
+      throw "Invalid Password";
+    }
+    return user
+  } else {
+    throw "Invalid Username";
+  }
+};
 
 const User = mongoose.model('User', userSchema)
-
 export default User;

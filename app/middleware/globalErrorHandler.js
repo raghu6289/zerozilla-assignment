@@ -8,8 +8,8 @@ export default (error, res) => {
     case errorCodes.alreadyExist:
       return res.status(409).send('Already exist')
     case errorCodes.notFound:
-      return res.status(401).send('Not found')
+      return res.status(404).send('Not found')
     default:
-      return res.status(401).send('Unknown error')
+      return res.status(500).send('Unknown error')
   }
 }

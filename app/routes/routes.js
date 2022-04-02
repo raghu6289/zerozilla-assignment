@@ -12,14 +12,14 @@ router.use("/agency", authenticateUser, agencyrouter);
 
 // User Registration
 
-router.post('/register', async function (req, res) {
+router.post('/register', async (req, res) => {
     try {
         const { username, password } = req.body;
 
         // validate user input
-        if (!username && password) { return res.status(400).send("All input is required") }
-
+        if (!(username && password)) { return res.status(400).send("All input is required") }
         if (username.length < 3) { return res.status(400).send("UserName Must be At least 3") }
+        if (password.length < 6) { return res.status(400).send("Password Must be At least 6") }
 
         // validating user is already existing or not
         const oldUser = await User.findOne({ username })
@@ -30,7 +30,6 @@ router.post('/register', async function (req, res) {
         const user = await User.create({ username, password: encryptedPassword })
 
         // Generating token
-
         const token = await user.generateToken()
         return res.status(200).send(token)
     } catch (err) {
@@ -40,11 +39,11 @@ router.post('/register', async function (req, res) {
 
 // User Login 
 
-router.post('/login', async (req, res, next) => {
+router.post('/login', async (req, res) => {
     try {
         const body = req.body
         // validate user input
-        if (!body.username && body.password) { return res.status(400).send("All input is required") }
+        if (!(body.username && body.password)) { return res.status(400).send("All input is required") }
 
         const user = await User.findByCredentials(body.username, body.password)
         // Generating token

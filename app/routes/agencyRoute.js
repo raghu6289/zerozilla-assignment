@@ -8,4 +8,4 @@ import Router from "express";
 
 export const agencyrouter = Router();
 
-agencyrouter.post("/",validator.body(postAgencyValidation), agencyController.addAgency);
+agencyrouter.post("/", validator.body(postAgencyValidation), agencyController.addAgency);
