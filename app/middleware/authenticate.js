@@ -1,7 +1,7 @@
 import User from '../schemas/user.js'
 
 export default async (req, res, next) => {
-  try{
+  try {
     const token = req.header('x-auth')
     const user = await User.findByToken(token)
     if (user) {
@@ -11,7 +11,7 @@ export default async (req, res, next) => {
     } else {
       res.status('401').send('token not available')
     }
-  }catch(err) {
+  } catch (err) {
     res.status('401').send(err)
   }
 }

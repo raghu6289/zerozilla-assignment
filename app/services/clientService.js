@@ -7,7 +7,6 @@ export const add = async (data) => {
 
 export const update = async (id, attrs) => {
   const updatedClient = await clientRepo.update(id, attrs);
-  console.log(id, updatedClient)
   if (!updatedClient) {
     throw { code: errorCodes.notFound }
   }

@@ -2,7 +2,7 @@
 
 REST API with token-based authentication and handling various HTTP status codes as per REST standards.
 
-CRUD operation on an entities/collection called Agency and client which has below fields. One Agency can have multiple clients.
+CRUD operation on an entities/collection called Agency and client. One Agency can have multiple clients.
 
 
 ## Pre-requisites

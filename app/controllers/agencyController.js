@@ -2,7 +2,7 @@ import * as agency from "../services/agencyService.js"; // Import from service f
 
 // Creating APi's
 
-// Repository -> Service -> Controller -> Router
+// Router -> Controller -> Service -> Repo
 
 // 1. Add Agency
 

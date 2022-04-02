@@ -2,7 +2,7 @@ import * as clientService from "../services/clientService.js";
 
 // Creating APi's
 
-// Repository -> Service -> Controller -> Router
+// Router -> Controller -> Service -> Repo
 
 // 1. Update Client
 
@@ -11,7 +11,6 @@ export const update = async (req, res, next) => {
     const client = await clientService.update(req.params.id, req.body);
     return res.status(200).send(client);
   } catch (err) {
-    console.log(err);
     next(err)
   }
 };
