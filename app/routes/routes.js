@@ -4,7 +4,6 @@ import authenticateUser from "../middleware/authenticate.js";
 import User from "../schemas/user.js";
 import bcryptjs from "bcryptjs";
 import Router from "express";
-
 import { errorCodes } from "../middleware/globalErrorHandler.js";
 
 export const router = Router();

@@ -8,7 +8,7 @@ const clientSchema = mongoose.model(
       type: String,
       required: true,
       unique: true,
-      default:() => uuidv4()
+      default: () => uuidv4()
     },
     agencyId: {
       type: String,

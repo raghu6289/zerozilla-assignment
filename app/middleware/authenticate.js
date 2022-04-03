@@ -1,5 +1,6 @@
 import User from '../schemas/user.js'
 
+// validating token
 export default async (req, res, next) => {
   try {
     const token = req.header('x-auth')
