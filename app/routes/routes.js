@@ -18,9 +18,9 @@ router.post('/register', async (req, res, next) => {
         const { username, password } = req.body;
 
         // validate user input
-        if (!(username && password)) throw { code: errorCodes.validationError }
-        if (username.length < 3) throw { code: errorCodes.usernameValidation }
-        if (password.length < 6) throw { code: errorCodes.passwordValidation }
+        if (!(username && password)) throw { code: errorCodes.validationError, msg: 'All fields are required' }
+        if (username.length < 3) throw { code: errorCodes.validationError, msg: 'UserName must be at least 3' }
+        if (password.length < 6) throw { code: errorCodes.validationError, msg: 'Password must be at least 6' }
 
         // validating user is already existing or not
         const oldUser = await User.findOne({ username })
@@ -44,7 +44,7 @@ router.post('/login', async (req, res, next) => {
     try {
         const body = req.body
         // validate user input
-        if (!(body.username && body.password)) throw { code: errorCodes.validationError }
+        if (!(body.username && body.password)) throw { code: errorCodes.validationError, msg: 'All fields are required' }
         const user = await User.findByCredentials(body.username, body.password)
 
         // Generating token

@@ -1,9 +1,7 @@
 export const errorCodes = {
   alreadyExist: 'alreadyExist',
   notFound: "notFound",
-  validationError: "validationError",
-  usernameValidation: "usernameValidation",
-  passwordValidation: "passwordValidation"
+  validationError: "validationError"
 }
 
 export default (error, req, res, next) => {
@@ -13,11 +11,7 @@ export default (error, req, res, next) => {
     case errorCodes.notFound:
       return res.status(404).send('Not found')
     case errorCodes.validationError:
-      return res.status(401).send('All fields are required')
-    case errorCodes.usernameValidation:
-      return res.status(401).send('UserName must be at least 3')
-    case errorCodes.passwordValidation:
-      return res.status(401).send('Password must be at least 6')
+      return res.status(400).send(error.msg || 'Invalid input')
     default:
       return res.status(500).send('Unknown error')
   }

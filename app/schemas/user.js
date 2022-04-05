@@ -55,7 +55,7 @@ userSchema.methods.generateToken = async function () {
   }
   const token = await jwt.sign(tokenData, 'jwt@123')
   user.tokens.push({ token })
-  user.save()
+  await user.save()
   return ({ token })
 }
 
