@@ -6,8 +6,6 @@ export default async (req, res, next) => {
     const token = req.header('x-auth')
     const user = await User.findByToken(token)
     if (user) {
-      req.user = user
-      req.token = token
       next()
     } else {
       res.status('401').send('token not available')

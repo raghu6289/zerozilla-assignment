@@ -44,6 +44,7 @@ userSchema.statics.findByToken = async function (token) {
   }
 }
 
+// Custom Methods
 // Generating token
 
 userSchema.methods.generateToken = async function () {
