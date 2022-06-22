@@ -2,6 +2,7 @@ import mongoose from 'mongoose';
 import jwt from 'jsonwebtoken';
 import bcryptjs from 'bcryptjs';
 
+
 const userSchema = new mongoose.Schema({
   username: {
     type: String,
@@ -75,6 +76,7 @@ userSchema.statics.findByCredentials = async function (username, password) {
     throw "Invalid Username";
   }
 };
+
 
 const User = mongoose.model('User', userSchema)
 export default User;
