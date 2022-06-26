@@ -20,6 +20,7 @@
   "homepage": "https://github.com/raghu6289/zerozilla-assignment#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "dotenv": "^16.0.1",
     "express": "^4.17.3",
     "express-joi-validation": "^5.0.1",
     "joi": "^17.6.0",
