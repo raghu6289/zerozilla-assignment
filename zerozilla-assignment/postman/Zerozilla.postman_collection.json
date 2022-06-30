@@ -1,0 +1,509 @@
+{
+	"info": {
+		"_postman_id": "91be5ee6-3e4f-4e56-8a55-f8e217e1bf7b",
+		"name": "Zerozilla",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User Registration",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"raghu\",\r\n    \"password\":\"password123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/v1/register",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"register"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "User Registration",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"vijay\",\r\n    \"password\":\"password321\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/register",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"register"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "html",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Cowboy"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/html; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "12"
+						},
+						{
+							"key": "Etag",
+							"value": "W/\"c-4VmhvoV3D5N5n+ODRiUzQvjg3TE\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 29 Mar 2022 19:47:33 GMT"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 vegur"
+						}
+					],
+					"cookie": [],
+					"body": "User created"
+				}
+			]
+		},
+		{
+			"name": "User Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"vijay\",\r\n    \"password\":\"password321\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/v1/login",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"login"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "User Login",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"vijay\",\r\n    \"password\":\"password321\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"login"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Cowboy"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "221"
+						},
+						{
+							"key": "Etag",
+							"value": "W/\"dd-G8ZCbUV2IsrWg3Yhb13ophbiXqY\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 29 Mar 2022 20:00:39 GMT"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 vegur"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjQzNjI1NDNlNmVkOGVkZjA2MTFkMzUiLCJ1c2VybmFtZSI6InZpamF5IiwiY3JlYXRlZEF0IjoxNjQ4NTg0MDM5MjQ4LCJpYXQiOjE2NDg1ODQwMzl9.cr6g4i9xIH9ilawvHoYsVmLbqj94iji4oCvjVfcBMwI\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Add Agency With Clients",
+			"request": {
+				"auth": {
+					"type": "apikey"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-auth",
+						"value": "{{token}}",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"ABC\",\r\n    \"address1\":\"Ramachandra Puram\",\r\n    \"address2\":\"RajajiNagar\",\r\n    \"state\":\"Karnataka\",\r\n    \"city\":\"Bangalore\",\r\n    \"phoneNumber\":\"7795333447\",\r\n    \"clients\":[{\r\n        \"name\":\"XYZ\",\r\n        \"email\":\"xyz@gmail.com\",\r\n        \"phoneNumber\":\"1234567890\",\r\n        \"totalBill\":\"15000\"\r\n    },{\r\n        \"name\":\"JD & Company\",\r\n        \"email\":\"jdcompany@gmail.com\",\r\n        \"phoneNumber\":\"9876546743\",\r\n        \"totalBill\":\"25000\"\r\n    }]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/v1/agency",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"agency"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Add Agency With Clients",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-auth",
+								"value": "{{token}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"ABC\",\r\n    \"address1\":\"Ramachandra Puram\",\r\n    \"address2\":\"RajajiNagar\",\r\n    \"state\":\"Karnataka\",\r\n    \"city\":\"Bangalore\",\r\n    \"phoneNumber\":\"7795333447\",\r\n    \"clients\":[{\r\n        \"name\":\"XYZ\",\r\n        \"email\":\"xyz@gmail.com\",\r\n        \"phoneNumber\":\"1234567890\",\r\n        \"totalBill\":\"15000\"\r\n    },{\r\n        \"name\":\"JD & Company\",\r\n        \"email\":\"jdcompany@gmail.com\",\r\n        \"phoneNumber\":\"9876546743\",\r\n        \"totalBill\":\"25000\"\r\n    }]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/agency",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"agency"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Cowboy"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "703"
+						},
+						{
+							"key": "Etag",
+							"value": "W/\"2bf-Rm/6/0Ymr9qel1bltoKVZuIg+y4\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 29 Mar 2022 20:08:28 GMT"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 vegur"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"name\": \"ABC\",\n    \"address1\": \"Ramachandra Puram\",\n    \"address2\": \"RajajiNagar\",\n    \"state\": \"Karnataka\",\n    \"city\": \"Bangalore\",\n    \"phoneNumber\": \"7795333447\",\n    \"_id\": \"6243673b3e6ed8edf0611d41\",\n    \"agencyId\": \"29a4fef3-ba60-4430-9a69-eb34ab550803\",\n    \"__v\": 0,\n    \"client\": [\n        {\n            \"agencyId\": \"29a4fef3-ba60-4430-9a69-eb34ab550803\",\n            \"name\": \"XYZ\",\n            \"email\": \"xyz@gmail.com\",\n            \"phoneNumber\": \"1234567890\",\n            \"totalBill\": 15000,\n            \"_id\": \"6243673c3e6ed8edf0611d43\",\n            \"clientId\": \"917d4338-cd46-474c-8fff-ee574f56498d\",\n            \"__v\": 0\n        },\n        {\n            \"agencyId\": \"29a4fef3-ba60-4430-9a69-eb34ab550803\",\n            \"name\": \"JD & Company\",\n            \"email\": \"jdcompany@gmail.com\",\n            \"phoneNumber\": \"9876546743\",\n            \"totalBill\": 25000,\n            \"_id\": \"6243673c3e6ed8edf0611d44\",\n            \"clientId\": \"edeb7fcf-70ef-440e-ae20-6d76468f0a5e\",\n            \"__v\": 0\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Update Client Details",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "x-auth",
+						"value": "{{token}}",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"MR Company\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/v1/client/{{client_id}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"client",
+						"{{client_id}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Update Client Details",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "x-auth",
+								"value": "{{token}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"MR Company\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/client/{{client_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"client",
+								"{{client_id}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Cowboy"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "231"
+						},
+						{
+							"key": "Etag",
+							"value": "W/\"e7-sGDjGZ99dftKWa0jRN2BMprcgjU\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 29 Mar 2022 20:13:24 GMT"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 vegur"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"_id\": \"6243673c3e6ed8edf0611d43\",\n    \"agencyId\": \"29a4fef3-ba60-4430-9a69-eb34ab550803\",\n    \"name\": \"MR Company\",\n    \"email\": \"xyz@gmail.com\",\n    \"phoneNumber\": \"1234567890\",\n    \"totalBill\": 15000,\n    \"clientId\": \"917d4338-cd46-474c-8fff-ee574f56498d\",\n    \"__v\": 0\n}"
+				}
+			]
+		},
+		{
+			"name": "Top Client",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-auth",
+						"value": "{{token}}",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/api/v1/client/topbill",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"client",
+						"topbill"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Top Client",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-auth",
+								"value": "{{token}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/v1/client/topbill",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"client",
+								"topbill"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Cowboy"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "101"
+						},
+						{
+							"key": "Etag",
+							"value": "W/\"65-sWjx0hyL3mdSoidy+3DO7QDopC8\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 29 Mar 2022 20:26:10 GMT"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 vegur"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"_id\": \"6243673c3e6ed8edf0611d44\",\n        \"agencyName\": \"ABC\",\n        \"clientName\": \"JD & Company\",\n        \"totalBill\": 25000\n    }\n]"
+				}
+			]
+		}
+	]
+}
