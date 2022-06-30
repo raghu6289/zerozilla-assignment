@@ -3,13 +3,13 @@ export const errorCodes = {
   notFound: "notFound",
 }
 
-export default (error, req, res, next) => {
+export default (error, res) => {
   switch (error.code) {
     case errorCodes.alreadyExist:
       return res.status(409).send('Already exist')
     case errorCodes.notFound:
-      return res.status(401).send('Not found')
+      return res.status(404).send('Not found')
     default:
-      return res.status(500).send('Unknown Error')
+      return res.status(500).send('Unknown error')
   }
 }

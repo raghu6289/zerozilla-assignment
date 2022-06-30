@@ -14,7 +14,7 @@ app.get('/', (req, res) => { res.send("Welcome to Zerozilla") })
 app.use(errorHandler)
 
 //PORT
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 //server
 mongoSetup();
