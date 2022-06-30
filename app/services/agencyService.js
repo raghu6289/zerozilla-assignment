@@ -7,4 +7,10 @@ export const add = async (data) => {
   agency.client = await clientRepo.bulkCreate(data.clients.map(c => ({ ...c, agencyId: agency.agencyId })));
   return agency;
 };
-
+/*
+export const deleteAagency = async (id) => {
+  const agency = await agencyRepo.deleteAgency({ agencyId: id });
+  await clientRepo.deleteAgencyClient(({ agencyId: id }))
+  return agency
+};
+*/
